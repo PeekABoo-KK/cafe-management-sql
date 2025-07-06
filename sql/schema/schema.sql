@@ -197,7 +197,13 @@ CREATE TABLE PROMOTION_ORDER (
 	FOREIGN KEY (PromotionID) REFERENCES PROMOTION(PromotionID)
 );
 
-
+-- USER table: used for login/authentication
+CREATE TABLE [USER] (
+	UserID INT PRIMARY KEY INDENTITY,
+	UserName NVARCHAR(50) UNIQUE NOT NULL,
+	PasswordHash NVARCHAR(255) NOT NULL,
+	Role NVARCHAR(20) DEFAULT 'Staff' CHECK (Role IN ('Admin', 'Staff'))
+);
 
 
 /*============================================================
